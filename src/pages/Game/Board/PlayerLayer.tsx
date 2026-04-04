@@ -18,7 +18,7 @@ export const PlayerLayer = React.memo(({ player, angle, cellSize }: Props) => {
         transform: `translate(${player.position.x * cellSize}rem, ${
           player.position.y * cellSize
         }rem) scale(1.2)`,
-        transition: "transform 250ms linear",
+        transition: "transform 350ms linear",
       }}
     >
       <Player angle={angle} />

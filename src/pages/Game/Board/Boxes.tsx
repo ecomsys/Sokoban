@@ -12,7 +12,7 @@ export const Boxes = React.memo(({ boxes, cellSize }: Props) => {
       {boxes.map((box) => (
         <div
           key={box.id}
-          className="absolute transition-transform duration-150 ease-linear will-change-transform top-0 left-0"
+          className="absolute transition-transform duration-300 ease-linear will-change-transform top-0 left-0"
           style={{
             transform: `translate(${box.position.x * cellSize}rem, ${
               box.position.y * cellSize

@@ -22,7 +22,7 @@ export default function Home() {
 
       {/* КНОПКА НАЗАД (fixed) */}
       <a
-        href="https://games.ecomsys.ru"
+        href="https://ecomsys.ru"
         className="
           cursor-pointer
           fixed top-4 sm:top-8 left-2.5 sm:left-8
