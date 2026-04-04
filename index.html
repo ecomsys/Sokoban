@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+
+    <!-- MOBILE VIEWPORT -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+/>
+
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        (function forceDesktopLayout() {
+          const BREAKPOINT = 1536;
+          const DESIGN_WIDTH = 1536;
+
+          const screenWidth = window.screen.width;
+          const dpr = window.devicePixelRatio || 1;
+          const realWidth = screenWidth / dpr;
+
+          const meta = document.querySelector('meta[name="viewport"]');
+          if (!meta) 
+            return;
+          
+          if (realWidth < BREAKPOINT) {
+            meta.setAttribute("content", "width=device-width, initial-scale=1");
+            console.log("adaptive mode:", realWidth);
+            return;
+          }
+
+          const scale = realWidth / DESIGN_WIDTH;
+
+          meta.setAttribute("content", `width=${DESIGN_WIDTH}, initial-scale=${scale}, maximum-scale=${scale}, user-scalable=no`);
+
+          console.log("forced 1920 mode:", {realWidth, scale});
+        })();
+      });
+    </script>
+
+    <!-- ОСНОВНОЙ SEO -->
+    <title>Sokoban — играть онлайн бесплатно | логическая головоломка с ящиками</title>
+
+    <meta
+      name="description"
+      content="Играй в Sokoban онлайн бесплатно. Классическая японская головоломка: перемещай ящики и расставь их по местам. Без регистрации, на телефоне и ПК."
+/>
+
+    <meta
+      name="keywords"
+      content="sokoban, сокобан, игра sokoban, головоломка с ящиками, логическая игра, push box puzzle, sokoban онлайн, играть бесплатно"
+/>
+
+    <meta name="author" content="Ecomsys Games"/>
+    <meta name="robots" content="index, follow"/>
+
+    <!-- THEME COLOR -->
+    <meta name="theme-color" content="#3ba7ff"/>
+    <meta name="msapplication-navbutton-color" content="#3ba7ff"/>
+
+    <!-- iOS PWA -->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-title" content="Sokoban"/>
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+
+    <!-- Android PWA -->
+    <meta name="mobile-web-app-capable" content="yes"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="screen-orientation" content="portrait"/>
+
+    <!-- OPEN GRAPH -->
+    <meta
+      property="og:title"
+      content="Sokoban — играй онлайн бесплатно"
+/>
+    <meta
+      property="og:description"
+      content="Классическая головоломка Sokoban: передвигай ящики и размещай их на цели. Играй прямо в браузере без регистрации."
+/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://ecomsys.ru/games/sokoban"/>
+    <meta
+      property="og:image"
+      content="https://ecomsys.ru/games/sokoban/preview.png"
+/>
+    <meta property="og:site_name" content="Sokoban"/>
+
+    <!-- TWITTER -->
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Sokoban — играй онлайн бесплатно"/>
+    <meta
+      name="twitter:description"
+      content="Передвигай ящики и решай уровни в классической игре Sokoban прямо в браузере."
+/>
+    <meta
+      name="twitter:image"
+      content="https://ecomsys.ru/games/sokoban/preview.png"
+/>
+
+    <!-- CANONICAL -->
+    <link rel="canonical" href="https://ecomsys.ru/games/sokoban"/>
+
+    <!-- FAVICON  PWA -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+
+    <!-- PWA -->
+    <link rel="manifest" href="/games/sokoban/site.webmanifest"/>
+  </head>
+
+  <body class="m-0 bg-[#7bad89]">
+    <div class="fixed inset-0 ">
+      <img src="/images/app-bg.webp" style="width:100%; height:100%;" class="w-full h-full object-cover"/>
+    </div>
+    <div id="root" class="h-[100dvh] overflow-y-auto relative z-1"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
