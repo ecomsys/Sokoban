@@ -31,7 +31,7 @@ export const usePlayerControls = () => {
 
     const delta = time - lastMoveTime.current;
 
-    if (delta >= 350) {
+    if (delta >= 360) {
       if (!isGameBlocked()) {
         movePlayer(pressedKey.current);
       }

@@ -33,13 +33,31 @@ const Board = ({ grid }: BoardProps) => {
   );
 
   // Параметры камеры
-  const deadZone = 0.5; // зона, в которой игрок не двигает камеру
-  let lerp = 0.02;   // плавность движения камеры
+  let deadZoneY = 0.5;
+  let deadZoneX = 0.5;
+
+  
+  if (game?.direction === "down") {
+    deadZoneY = 0.6
+  } else if (game?.direction === "up") {
+    deadZoneY = 0.5
+  }
+
+  if (game?.direction === "right") {
+    deadZoneX = 0.6
+  } else if (game?.direction === "left") {
+    deadZoneX = 0.5
+  }
+
+
+
+  // плавность движения камеры
+  let lerp = 0.02;
 
   if (window.innerWidth <= 640) {
-    lerp = 0.05;
-  } else {
     lerp = 0.02;
+  } else {
+    lerp = 0.01;
   };
 
   const player = game?.sokoban.player;
@@ -68,8 +86,8 @@ const Board = ({ grid }: BoardProps) => {
     const playerScreenY = (playerYRem * 16 * scale) - currentScrollY;
 
     // Dead zone (границы, где камера не двигается)
-    const zoneX = viewWidthRem * 16 * scale * deadZone;
-    const zoneY = viewHeightRem * 16 * scale * deadZone;
+    const zoneX = viewWidthRem * 16 * scale * deadZoneX;
+    const zoneY = viewHeightRem * 16 * scale * deadZoneY;
 
     let targetX = currentScrollX;
     let targetY = currentScrollY;
@@ -93,7 +111,7 @@ const Board = ({ grid }: BoardProps) => {
       targetY = currentScrollY + (playerScreenY - bottomBoundary);
     }
 
-    // 🎬 Плавная анимация (lerp)
+    // Плавная анимация (lerp)
     let animationFrame: number;
 
     const animate = () => {
