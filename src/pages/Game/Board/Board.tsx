@@ -33,19 +33,14 @@ const Board = ({ grid }: BoardProps) => {
   );
 
   // Параметры камеры
-  let deadZoneY = 0.5;
+  const deadZoneY = 0.5;
   let deadZoneX = 0.5;
-
   
-  if (game?.direction === "down") {
-    deadZoneY = 0.6
-  } else if (game?.direction === "up") {
-    deadZoneY = 0.5
-  }
+  
 
-  if (game?.direction === "right") {
-    deadZoneX = 0.6
-  } else if (game?.direction === "left") {
+  if (game?.direction === "right" && window.innerWidth <= 640) {
+    deadZoneX = 0.65
+  } else if (game?.direction === "left" || (game?.direction === "right" &&  window.innerWidth > 640)) {
     deadZoneX = 0.5
   }
 
