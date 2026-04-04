@@ -41,14 +41,8 @@ export default function OrientationGuard({ children }: OrientationGuardProps) {
   if (!isLandscapePhone) return <>{children}</>;
 
   return (
-    <div className="fixed inset-0 z-[999999] flex items-center justify-center px-4 bg-gradient-to-br from-blue-400 via-blue-500 to-indigo-600">
-       {/* ===== Фоновое изображение ===== */}
-      <img
-        src="/images/app-bg.webp"
-        alt="Фон"
-        className="fixed inset-0 w-full h-full object-cover"
-      />      
-    
+    <div className="fixed inset-0 z-[999999] flex items-center justify-center px-4 bg-gradient-to-br from-teal-400 via-indigo-500 to-teal-900">
+      
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}

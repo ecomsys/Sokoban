@@ -15,7 +15,7 @@ import type {
 
 const STORAGE_KEY = "zokoban-game-storage";
 const MAX_HISTORY = 10;
-const BOX_PUSH_DELAY = 175;  // задержка при толкании ящика
+const BOX_PUSH_DELAY = 210;  // задержка при толкании ящика
 
 const boxMoveSound = new Audio(
   `${import.meta.env.BASE_URL}audio/move-box.mp3`

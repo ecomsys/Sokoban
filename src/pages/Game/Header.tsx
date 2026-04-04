@@ -18,11 +18,6 @@ interface GameHeaderProps {
   isDisabled?: boolean;
   levels?: LevelMap[];
   currentLevelIndex?: number;
-  toggleSounds: () => void;
-  sounds: boolean;
-  toggleMusic: () => void;
-  music: boolean;
-  setMusic: (value: boolean) => void;
   boxesOnTargets: number;
   totalTargets: number;
 }
@@ -32,15 +27,16 @@ export default function GameHeader({
   onRestart,
   isDisabled = false,
   currentLevelIndex,
-  toggleSounds,
-  sounds,
-  toggleMusic,
-  music,
   totalTargets,
   boxesOnTargets
 }: GameHeaderProps) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
+  const sounds = useGameStore((s) => s.sounds);
+  const toggleSounds = useGameStore((s) => s.toggleSounds);
+  const music = useGameStore((s) => s.music);
+  const toggleMusic = useGameStore((s) => s.toggleMusic);
 
   const { closeFullscreen } = useFullscreen();
   const navigate = useNavigate();

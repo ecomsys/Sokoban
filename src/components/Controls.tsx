@@ -5,6 +5,7 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
+import { engineSound } from "@/classes/engineSound";
 
 interface ControlsProps {
   startMoving: (dir: Direction) => void;
@@ -12,56 +13,58 @@ interface ControlsProps {
 }
 
 const Controls = ({ startMoving, stopMoving }: ControlsProps) => {
+
   const bind = (dir: Direction) => ({
-    onTouchStart: () => {
+
+    onPointerDown: (e: React.PointerEvent) => {
+      e.currentTarget.setPointerCapture(e.pointerId);
       startMoving(dir);
     },
-    onTouchEnd: () => {
+
+    onPointerUp: (e: React.PointerEvent) => {
+      e.currentTarget.releasePointerCapture(e.pointerId);
       stopMoving();
     },
-    onTouchCancel: stopMoving,
 
-    //  бонус: работает и мышкой
-    onMouseDown: () => startMoving(dir),
-    onMouseUp: stopMoving,
-    onMouseLeave: stopMoving,
+    onPointerCancel: stopMoving,
   });
 
+
   const btn =
-    "w-12 h-12 flex items-center justify-center bg-black/20 backdrop-blur rounded-full active:scale-95 transition cursor-pointer active:bg-teal-900";
+    "w-12 h-12 flex items-center justify-center bg-teal-900/20 backdrop-blur rounded-full transition active:bg-teal-900/70";
 
   return (
-    <div onContextMenu={(e) => e.preventDefault()} className="fixed bottom-3 right-4.5 select-none touch-manipulation rounded-full bg-white/15 p-2">
+    <div onClick={() => { engineSound.initAudio() }} onContextMenu={(e) => e.preventDefault()} className="fixed bottom-3 right-4.5 select-none touch-none rounded-full bg-white/15 p-2">
       <div className="grid grid-cols-3 grid-rows-3 gap-0">
         {/* пусто */}
         <div />
 
         {/* UP */}
-        <button {...bind("up")} className={btn}>
+        <div {...bind("up")} className={btn} style={{ touchAction: "manipulation" }}>
           <ChevronUp size={'2rem'} className="text-white" />
-        </button>
+        </div>
 
         <div />
 
         {/* LEFT */}
-        <button {...bind("left")} className={btn}>
+        <div {...bind("left")} className={btn} style={{ touchAction: "manipulation" }}>
           <ChevronLeft size={'2rem'} className="text-white" />
-        </button>
+        </div>
 
         {/* центр (пусто или можно логотип) */}
         <div />
 
         {/* RIGHT */}
-        <button {...bind("right")} className={btn}>
+        <div {...bind("right")} className={btn} style={{ touchAction: "manipulation" }}>
           <ChevronRight size={'2rem'} className="text-white" />
-        </button>
+        </div>
 
         <div />
 
         {/* DOWN */}
-        <button {...bind("down")} className={btn}>
+        <div {...bind("down")} className={btn} style={{ touchAction: "manipulation" }}>
           <ChevronDown size={'2rem'} className="text-white" />
-        </button>
+        </div>
 
         <div />
       </div>

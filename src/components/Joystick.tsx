@@ -12,8 +12,9 @@ const Joystick = ({ onMove }: JoystickProps) => {
   const [dragging, setDragging] = useState(false);
   const [stickPos, setStickPos] = useState({ x: 0, y: 0 });
 
-  const maxRadius = 40; // радиус стика
-  const deadZone = 10;  // минимальное движение
+  const maxRadius = 30; // радиус стика
+  const deadZone = 50;  // минимальное движение
+  const sensitivity = 1
 
   const handleStart = () => {
     setDragging(true);
@@ -28,8 +29,8 @@ const Joystick = ({ onMove }: JoystickProps) => {
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
 
-    let dx = touch.clientX - centerX;
-    let dy = touch.clientY - centerY;
+    let dx = touch.clientX - centerX * sensitivity;;
+    let dy = touch.clientY - centerY * sensitivity;;
 
     const distance = Math.sqrt(dx * dx + dy * dy);
 
@@ -66,10 +67,10 @@ const Joystick = ({ onMove }: JoystickProps) => {
       onTouchStart={handleStart}
       onTouchMove={handleMove}
       onTouchEnd={handleEnd}
-      className="fixed bottom-6 left-6 w-[6.25rem] h-[6.25rem] bg-white/20 rounded-full flex items-center justify-center touch-none"
+      className="fixed bottom-2.5 right-4.5 w-[9rem] h-[9rem] bg-white/20 rounded-full flex items-center justify-center touch-none"
     >
       <div
-        className="relative w-[3.75rem] h-[3.75rem] rounded-full transition-transform overflow-hidden"
+        className="select-none pointer-events-none relative w-[6rem] h-[6rem] rounded-full transition-transform overflow-hidden"
         style={{
           transform: `translate(${stickPos.x}px, ${stickPos.y}px)`
         }}>

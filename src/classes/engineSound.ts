@@ -21,15 +21,9 @@ export class EngineSound {
     }
 
     if (this.ctx.state === "suspended") {
-      await this.ctx.resume();
+      this.ctx.resume();
     }
-
-    const buffer = this.ctx.createBuffer(1, 1, 22050);
-    const source = this.ctx.createBufferSource();
-    source.buffer = buffer;
-    source.connect(this.ctx.destination);
-    source.start();
-
+   
     if (!this.osc) {
       this.createNodes();
     }

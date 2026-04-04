@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { AppRouter } from "./Routes";
 import OrientationGuard from "./OrentationGuard";
-
 import autoREM from "@/utils/autoRem";
 
 export function AppProviders() {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false);  
 
   useEffect(() => {
     const cleanup = autoREM(1536, 16);

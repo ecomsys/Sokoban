@@ -44,6 +44,19 @@
 button {
   touch-action: none;
 }
+
 button:focus {
   outline: none;
+}
+
+/* убираем вибро на мобилке */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+div {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }

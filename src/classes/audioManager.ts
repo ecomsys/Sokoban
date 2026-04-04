@@ -104,14 +104,12 @@ export const playMusic = async () => {
   if (!audioUnlocked) {
     await unlockAudio();
   }
+  
+  if (currentMusic) {
+    return; // уже играет — не трогаем
+  }
 
   const src = getRandomTrack();
-
-  // если уже играет — остановим
-  if (currentMusic) {
-    currentMusic.pause();
-    currentMusic.currentTime = 0;
-  }
 
   const audio = new Audio(src);
   audio.loop = false;
@@ -119,13 +117,14 @@ export const playMusic = async () => {
   currentMusic = audio;
 
   audio.addEventListener("ended", () => {
-    playMusic(); // следующий рандомный трек
+    currentMusic = null; // важно!
+    playMusic(); // следующий трек
   });
 
   try {
     await audio.play();
   } catch {
-    // fd
+    // аав
   }
 };
 

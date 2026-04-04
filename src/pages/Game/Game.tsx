@@ -3,7 +3,6 @@ import { useGamer } from "@/hooks/useGamer";
 import { useEffect } from "react";
 import { getTargetsCount } from "@/utils/getTargetsCount";
 
-import { useGame } from "@/stores/gameStore";
 import { useGameStore } from "@/stores/gameStore";
 import Board from "./Board/Board";
 import { Loader } from "@/ui/loader";
@@ -13,8 +12,9 @@ import VictoryModal from "@/components/VictoryModal";
 import { levels } from "./Levels";
 
 import { usePlayerControls } from "@/hooks/usePlayerControls";
-// import Joystick from "@/components/Joystick";
-import Controls from "@/components/Controls";
+import Joystick from "@/components/Joystick";
+import type { Direction } from "@/types/types";
+// import Controls from "@/components/Controls";
 import { useTimer } from "@/hooks/useTimer";
 
 export default function Game() {
@@ -24,15 +24,8 @@ export default function Game() {
 
   useGamer();
   useTimer();
-
-  const {
-    startNewGame,
-    sounds,
-    toggleSounds,
-    music,
-    toggleMusic,
-    setMusic
-  } = useGame();
+ 
+  const startNewGame = useGameStore((s) => s.startNewGame);
 
   const currentGame = useGameStore((s) =>
     s.userSession?.games.find(
@@ -106,6 +99,14 @@ export default function Game() {
   const boxesOnTargets = boxes.filter(b => b.onTarget).length;
 
 
+  const handleJoystickMove = (dir: Direction | null) => {
+    if (!dir) {
+      stopMoving();
+      return;
+    }
+    startMoving(dir);
+  };
+
   return (
     <div className="flex flex-col items-center gap-2.5">
 
@@ -115,12 +116,7 @@ export default function Game() {
         onRestart={startNewGame}
         levels={levels}
         currentLevelIndex={currentGame?.levelIndex}
-        className="my-container"
-        sounds={sounds}
-        toggleSounds={toggleSounds}
-        music={music}
-        toggleMusic={toggleMusic}
-        setMusic={setMusic}
+        className="my-container"      
         boxesOnTargets={boxesOnTargets}
         totalTargets={totalTargets}
       />
@@ -148,8 +144,8 @@ export default function Game() {
         </div>
       )}
 
-      {/* <Joystick onMove={handleMove} /> */}
-      <Controls startMoving={startMoving} stopMoving={stopMoving} />
+      <Joystick onMove={handleJoystickMove} />
+      {/* <Controls startMoving={startMoving} stopMoving={stopMoving} /> */}
 
     </div>
   );

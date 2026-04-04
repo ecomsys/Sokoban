@@ -41,7 +41,8 @@ export const usePlayerControls = () => {
     rafRef.current = requestAnimationFrame(loop);
   };
 
-  const startMoving = (direction: Direction) => {
+  const startMoving = (direction: Direction) => {    
+    
     if (sounds) unlockAudio("/games/sokoban/audio/win.mp3");
     if (sounds) unlockAudio("/games/sokoban/audio/victory.mp3");
 
