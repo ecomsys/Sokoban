@@ -21,7 +21,7 @@ export const Boxes = React.memo(({ boxes, cellSize }: Props) => {
         >
           <div
             className={`w-[2.5rem] h-[2.5rem] sm:w-[3.5rem] sm:h-[3.5rem] ${
-              box.onTarget ? "" : "filter grayscale"
+              box.onTarget ? "" : "opacity-85"
             }`}
           >
             <img

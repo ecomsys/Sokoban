@@ -42,7 +42,7 @@
 }
 
 button {
-  touch-action: none;
+  touch-action: manipulation;
 }
 
 button:focus {
@@ -56,7 +56,7 @@ button:focus {
 
 button,
 div {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
+  /* -webkit-touch-callout: none;
+  -webkit-user-select: none; */
   user-select: none;
 }

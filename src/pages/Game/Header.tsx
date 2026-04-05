@@ -74,7 +74,7 @@ export default function GameHeader({
   }
 
   return (
-    <div className="px-4 sm:px-4 pt-2.5 w-full min-w-[20rem]">
+    <div className="px-2 sm:px-4 pt-2.5 w-full min-w-[20rem]">
       <nav
         className="relative flex items-center flex-col menu:flex-row justify-center bg-gradient-to-r from-teal-500 via-teal-600 to-teal-700 border border-teal-600/40 shadow-[0_0.625rem_1.25rem_rgba(0,0,0,0.25),0_0.25rem_0.375rem_rgba(0,0,0,0.15)]
       px-2 sm:px-3 lg:px-6 py-2 sm:py-4 rounded-lg sm:rounded-2xl gap-1.5 mx-auto w-full
@@ -121,7 +121,8 @@ export default function GameHeader({
             </button>
 
             {open && (
-              <div className="scrollbar-none overflow-y-auto max-h-[16rem] absolute top-full mt-0.5 left-0 bg-teal-800 border border-teal-600 rounded-xl shadow-lg z-50 min-w-[7.5rem] overflow-hidden">
+              <div className=" touch-auto scrollbar-none overflow-y-auto max-h-[16rem] absolute top-full mt-[0rem] left-0 bg-teal-800 border border-teal-600 rounded-xl z-50 min-w-[7.5rem] w-full"
+              style={{ WebkitOverflowScrolling: "touch" }}>
                 {unlockedLevels.map((levelIndex) => (
                   <button
                     key={levelIndex}
@@ -129,7 +130,7 @@ export default function GameHeader({
                       onRestart(levelIndex);
                       setOpen(false);
                     }}
-                    className={`w-full cursor-pointer text-white text-left px-4 py-4 text-xl hover:bg-teal-700 transition ${levelIndex === currentLevelIdx ? "bg-teal-700" : ""
+                    className={`w-full cursor-pointer text-white text-center  px-3 py-3 text-xl hover:bg-teal-700 transition ${levelIndex === currentLevelIdx ? "bg-teal-700" : ""
                       }`}
                   >
                     Склад {levelIndex + 1}

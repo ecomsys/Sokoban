@@ -3,8 +3,8 @@ export const ENGINE_SOUND_CONFIG = {
   masterVolume: 0.3,
 
   //  Частоты двигателя
-  minFrequency: 120,
-  maxFrequency: 250,
+  minFrequency: 60,
+  maxFrequency: 140,
 
   // Скорость набора оборотов
   rpmGrowthSpeed: 140,

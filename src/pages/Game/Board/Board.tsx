@@ -154,7 +154,7 @@ const Board = ({ grid }: BoardProps) => {
   }, []);
 
   return (
-    <div className="px-[1rem] ">
+    <div className="px-2 ">
       <div
         ref={containerRef}
         className="
@@ -162,12 +162,11 @@ const Board = ({ grid }: BoardProps) => {
           h-full
           w-full
           min-w-[18rem]
-          max-w-[calc(100vw-2rem)]
+          max-w-[calc(100vw-1rem)]
           max-h-[calc(100dvh-10.7rem)]
           menu:max-h-[calc(100dvh-8rem)]
           overflow-scroll
-          scrollbar-none
-          rounded-lg sm:rounded-2xl
+          scrollbar-none         
         "
       >
         {/* Слои рендера */}

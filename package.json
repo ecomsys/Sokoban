@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "svg": "node .npm/svg.js",
+    "levels": "node .npm/levels.js",
     "tunnel": "concurrently \"npm run dev\" \"ngrok http 5173\""
   },
   "dependencies": {

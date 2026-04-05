@@ -22,7 +22,7 @@ const Cell = React.memo(({ type }: { type: CellSymbol }) => {
       );
       break;
     case "%":
-       base += " bg-teal-900";
+      base += " bg-teal-900";
       content = (
         <img
           className="w-full h-full object-cover"
@@ -31,6 +31,11 @@ const Cell = React.memo(({ type }: { type: CellSymbol }) => {
         />
       );
       break;
+
+    case "-":
+      base += " bg-transparent";
+      break;
+
     default:
       base += " bg-teal-900";
   }

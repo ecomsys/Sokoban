@@ -6,7 +6,8 @@ export type CellSymbol =
   | " "
   | "*"
   | "+"
-  | "%";
+  | "%"
+  | "-";
 
 export type LevelMap = string[];
 

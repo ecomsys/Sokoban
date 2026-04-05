@@ -1,9 +1,19 @@
 {
   "tracks": [
-    "/games/sokoban/audio/011.mp3",
-    "/games/sokoban/audio/022.mp3",
-    "/games/sokoban/audio/033.mp3",
-    "/games/sokoban/audio/044.mp3",
-    "/games/sokoban/audio/055.mp3"
+    "/games/sokoban/audio/01.mp3",
+    "/games/sokoban/audio/02.mp3",
+    "/games/sokoban/audio/03.mp3",
+    "/games/sokoban/audio/04.mp3",
+    "/games/sokoban/audio/05.mp3",
+    "/games/sokoban/audio/06.mp3",
+    "/games/sokoban/audio/07.mp3",
+    "/games/sokoban/audio/08.mp3",
+    "/games/sokoban/audio/09.mp3",
+    "/games/sokoban/audio/10.mp3",
+    "/games/sokoban/audio/11.mp3",
+    "/games/sokoban/audio/12.mp3",
+    "/games/sokoban/audio/13.mp3",
+    "/games/sokoban/audio/14.mp3",
+    "/games/sokoban/audio/15.mp3"
   ]
 }

@@ -167,7 +167,7 @@ export const useGameStore = create<GameStore>()(
     return {
       userSession: null,
 
-      unlockedLevels: [0, 50],
+      unlockedLevels: [0],
 
       setUserSession: (session) => set({ userSession: session }),
 
