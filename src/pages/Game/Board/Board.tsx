@@ -163,7 +163,7 @@ const Board = ({ grid }: BoardProps) => {
           w-full
           min-w-[18rem]
           max-w-[calc(100vw-1rem)]
-          max-h-[calc(100dvh-10.7rem)]
+          max-h-[calc(100dvh-9.5rem)]
           menu:max-h-[calc(100dvh-8rem)]
           overflow-scroll
           scrollbar-none         
